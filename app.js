@@ -2,8 +2,8 @@ import express from 'express';
 import session from 'express-session';
 import tasks from './routes/tasks.js';
 import users from './routes/users.js';
+import options from './lib/environment.js';
 
-const port = process.env.PORT || 3001;
 const staticDir = 'static';
 
 const app = express();
@@ -16,4 +16,4 @@ app.use('/user', users);
 app.use(express.static(staticDir));
 
 
-const server = app.listen(port, () => console.log(`Example app listening at port ${port}!`));
+const server = app.listen(options.listenPort, () => console.log(`Example app listening at port ${options.listenPort}!`));

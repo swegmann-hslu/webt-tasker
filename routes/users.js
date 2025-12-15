@@ -1,8 +1,9 @@
 import express from 'express'
 import { MongoClient } from 'mongodb'
 import createUserAccounts from '../lib/userAccounts.js';
+import options from '../lib/environment.js';
 
-const mongoClient = new MongoClient('mongodb://localhost');
+const mongoClient = new MongoClient(`mongodb://${options.mongoHost}`);
 const db = mongoClient.db('tasks');
 const userAccounts = await createUserAccounts(db.collection('users'));
 const router = express.Router();

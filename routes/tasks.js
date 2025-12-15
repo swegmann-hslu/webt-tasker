@@ -1,8 +1,9 @@
 import express from 'express';
 import { MongoClient } from 'mongodb'
+import options from '../lib/environment.js';
 
 const router = express.Router();
-const mongoClient = new MongoClient('mongodb://localhost');
+const mongoClient = new MongoClient(`mongodb://${options.mongoHost}`);
 const db = mongoClient.db('tasks');
 const tasks = db.collection('tasks');
 
